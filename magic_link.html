@@ -34,12 +34,15 @@
             if(isMobile.any()){
                 if( isMobile.iOS() ){
                     window.location.href = 'hybee://';
+                    window.open("http://test.hybee.co/account-active", "_self")
                 }
                 else {
                     console.log("android");
                 }
             }
-            window.open("http://test.hybee.co/account-active", "_self")
+            else {
+                window.open("http://test.hybee.co/account-active", "_self")
+            }
         }
         else {
             window.open("http://test.hybee.co/expired-link", "_self")
