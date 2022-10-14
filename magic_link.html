@@ -7,7 +7,7 @@
     <title>Hybee</title>
 </head>
 <body>
-    <a href="hybee://">Open App</a>
+    <a href="scheme=hybee://">Open App</a>
     <script>
         if (getExpireDate() > getTimestampInSeconds()){
             var isMobile = {
@@ -38,6 +38,7 @@
                 }
                 else {
                     console.log("android");
+                    window.open("http://test.hybee.co/account-active", "_self")
                 }
             }
             else {
