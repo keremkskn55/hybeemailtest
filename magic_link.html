@@ -50,17 +50,13 @@
         }
 
         function getExpireDate() {
-            const url = new URL(document.URL)
-            const searchParams = url.searchParams;
-            var expireDate = 0
-            expireDate = parseFloat(searchParams.get('expiredate'));
-            console.log(expireDate)
 
-            // var idx = document.URL.indexOf('?')
-            // var expireDate = 0
-            // if (idx != -1) {
-            //     expireDate = parseFloat(document.URL.substring(idx + 1, document.URL.length));
-            // }
+            var expireDate = 0
+            var idx = document.URL.indexOf('?')
+            var expireDate = 0
+            if (idx != -1) {
+                expireDate = parseFloat(document.URL.substring(idx + 1, document.URL.length));
+            }
             return expireDate;
         }
 
