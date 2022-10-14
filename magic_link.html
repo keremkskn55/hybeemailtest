@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybee</title>
+</head>
+<body>
+    <script>
+        if (getExpireDate() > getTimestampInSeconds()){
+            var isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            if(isMobile.any()){
+                if( isMobile.iOS() ){
+                    window.location.href = 'hybee://';
+                }
+                else {
+                    console.log("android")
+                    // <a href="intent:#Intent;scheme=hybee://;package=com.hybee.app;end">Open App</a>
+                }
+                window.open("http://test.hybee.co/account-active", "_self")
+            }
+            else {
+                window.open("http://test.hybee.co/account-active", "_self")
+            }
+            // window.open("http://test.hybee.co/account-active", "_self")
+        }
+        else {
+            window.open("http://test.hybee.co/expired-link", "_self")
+        }
+
+        function getExpireDate() {
+            const url = new URL(document.URL)
+            const searchParams = url.searchParams;
+            var expireDate = 0
+            expireDate = parseFloat(searchParams.get('expiredate'));
+            console.log(expireDate)
+
+            // var idx = document.URL.indexOf('?')
+            // var expireDate = 0
+            // if (idx != -1) {
+            //     expireDate = parseFloat(document.URL.substring(idx + 1, document.URL.length));
+            // }
+            return expireDate;
+        }
+
+        function getTimestampInSeconds () {
+            return Math.floor(Date.now() / 1000)
+        }
+    </script>
+</body>
+</html>
