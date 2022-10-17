@@ -7,7 +7,8 @@
     <title>Hybee</title>
 </head>
 <body>
-    <a id="btn" href="scheme=hybee://">Open App</a>
+    Test
+    <!-- <a id="btn" href="scheme=hybee://">Open App</a> -->
     <script>
         window.onload = function() {
             if (getExpireDate() > getTimestampInSeconds()){
@@ -40,7 +41,9 @@
                     else {
                         // document.getElementById('btn')[0].click();
                         // window.open("http://test.hybee.co/account-active", "_self")
-                        window.open("hybee://", "_self")
+                        setTimeout(function() {
+                            window.open("hybee://", "_self")
+                        }, 1000);
                     }
                 }
                 else {
