@@ -9,44 +9,46 @@
 <body>
     <a id="btn" href="scheme=hybee://">Open App</a>
     <script>
-        if (getExpireDate() > getTimestampInSeconds()){
-            var isMobile = {
-                Android: function() {
-                    return navigator.userAgent.match(/Android/i);
-                },
-                BlackBerry: function() {
-                    return navigator.userAgent.match(/BlackBerry/i);
-                },
-                iOS: function() {
-                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-                },
-                Opera: function() {
-                    return navigator.userAgent.match(/Opera Mini/i);
-                },
-                Windows: function() {
-                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-                },
-                any: function() {
-                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                }
-            };
+        window.onload = function() {
+            if (getExpireDate() > getTimestampInSeconds()){
+                var isMobile = {
+                    Android: function() {
+                        return navigator.userAgent.match(/Android/i);
+                    },
+                    BlackBerry: function() {
+                        return navigator.userAgent.match(/BlackBerry/i);
+                    },
+                    iOS: function() {
+                        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                    },
+                    Opera: function() {
+                        return navigator.userAgent.match(/Opera Mini/i);
+                    },
+                    Windows: function() {
+                        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                    },
+                    any: function() {
+                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                    }
+                };
 
-            if(isMobile.any()){
-                if( isMobile.iOS() ){
-                    window.location.href = 'hybee://';
-                    window.open("http://test.hybee.co/account-active", "_self")
+                if(isMobile.any()){
+                    if( isMobile.iOS() ){
+                        window.location.href = 'hybee://';
+                        window.open("http://test.hybee.co/account-active", "_self")
+                    }
+                    else {
+                        document.getElementById('btn').click();
+                        window.open("http://test.hybee.co/account-active", "_self")
+                    }
                 }
                 else {
-                    document.getElementById('btn').click();
                     window.open("http://test.hybee.co/account-active", "_self")
                 }
             }
             else {
-                window.open("http://test.hybee.co/account-active", "_self")
+                window.open("http://test.hybee.co/expired-link", "_self")
             }
-        }
-        else {
-            window.open("http://test.hybee.co/expired-link", "_self")
         }
 
         function getExpireDate() {
