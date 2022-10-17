@@ -43,10 +43,11 @@
                         // window.open("http://test.hybee.co/account-active", "_self")
                         
                         window.open("http://test.hybee.co/account-active", "_blank")
-                        window.open("hybee://", "_self")
-                        // setTimeout(function() {
-                        //     window.open("hybee://")
-                        // }, 3000);
+                        
+                        setTimeout(function() {
+                            window.open("hybee://")
+                        }, 3000);
+                        window.close()
                     }
                 }
                 else {
