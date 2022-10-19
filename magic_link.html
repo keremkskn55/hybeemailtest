@@ -7,7 +7,7 @@
     <title>Hybee</title>
 </head>
 <body>
-    <!-- <a id="btn" href="scheme=hybee://">Open App</a> -->
+    <a id="btn" href="intent:#Intent;scheme=hybee://app;package=tr.com.garcia.hybee;end">Open Map</a>
     <script>
         window.onload = function() {
             if (getExpireDate() > getTimestampInSeconds()){
@@ -34,25 +34,10 @@
 
                 if(isMobile.any()){
                     if( isMobile.iOS() ){
-                        // window.location.href = "hybee://app";
-                        // indow.open("http://test.hybee.co/account-active", "_self")
-                        // window.open("http://test.hybee.co/account-active", "_blank")
-                        
                         window.location.href = "hybee://app"
-                        // window.open("hybee://")
-                        // window.close()
                     }
                     else {
-                        // document.getElementById('btn')[0].click();
-                        // window.open("http://test.hybee.co/account-active", "_self")
-                        
-                        window.open("http://test.hybee.co/account-active", "_blank")
-                        window.open("hybee://")
-                        window.close()
-                        // setTimeout(function() {
-                        //     window.open("hybee://")
-                        //     window.close()
-                        // }, 3000);
+                        document.getElementById('btn').click();
                     }
                 }
                 else {
